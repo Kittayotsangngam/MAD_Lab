@@ -1,0 +1,6 @@
+../Core/Src/main.c:51:6:displayHex	1
+../Core/Src/main.c:58:5:average_8	2
+../Core/Src/main.c:71:5:average_16	2
+../Core/Src/main.c:100:5:main	12
+../Core/Src/main.c:192:6:SystemClock_Config	4
+../Core/Src/main.c:250:6:Error_Handler	1

@@ -1,0 +1,59 @@
+15:02:34 **** Incremental Build of configuration Debug for project Lab5new ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/STM32F7xx_HAL_Driver/Inc -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/CMSIS/Device/ST/STM32F7xx/Include -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/STM32F7xx_HAL_Driver/Inc -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/CMSIS/Device/ST/STM32F7xx/Include -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'displayHex':
+../Core/Src/main.c:54:9: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+   54 |         sprintf(hex_Str, "ADC1_CH10 0x%08X Vin = %.2f V\r\n" , num, Adc);
+      |         ^~~~~~~
+../Core/Src/main.c:24:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   23 | #include "gpio.h"
+  +++ |+#include <stdio.h>
+   24 | 
+../Core/Src/main.c:54:9: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+   54 |         sprintf(hex_Str, "ADC1_CH10 0x%08X Vin = %.2f V\r\n" , num, Adc);
+      |         ^~~~~~~
+../Core/Src/main.c:54:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:54:42: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+   54 |         sprintf(hex_Str, "ADC1_CH10 0x%08X Vin = %.2f V\r\n" , num, Adc);
+      |                                       ~~~^                     ~~~
+      |                                          |                     |
+      |                                          unsigned int          uint32_t {aka long unsigned int}
+      |                                       %08lX
+../Core/Src/main.c:56:56: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   56 |         HAL_UART_Transmit(&huart3, (uint8_t*) &hex_Str,strlen(hex_Str),1000);
+      |                                                        ^~~~~~
+../Core/Src/main.c:24:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   23 | #include "gpio.h"
+  +++ |+#include <string.h>
+   24 | 
+../Core/Src/main.c:56:56: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   56 |         HAL_UART_Transmit(&huart3, (uint8_t*) &hex_Str,strlen(hex_Str),1000);
+      |                                                        ^~~~~~
+../Core/Src/main.c:56:56: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:128:12: warning: unused variable 'hex1' [-Wunused-variable]
+  128 |   uint32_t hex1 = 504;
+      |            ^~~~
+../Core/Src/main.c: In function 'displayHex':
+../Core/Src/main.c:54:58: warning: ' V
+   ' directive writing 4 bytes into a region of size between 0 and 3 [-Wformat-overflow=]
+   54 |         sprintf(hex_Str, "ADC1_CH10 0x%08X Vin = %.2f V\r\n" , num, Adc);
+      |                                                      ~~~~^~
+../Core/Src/main.c:54:9: note: 'sprintf' output between 35 and 345 bytes into a destination of size 33
+   54 |         sprintf(hex_Str, "ADC1_CH10 0x%08X Vin = %.2f V\r\n" , num, Adc);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Lab5new.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\honho\STM32CubeIDE\MAD_Lab\Lab5new\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab5new.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab5new.elf
+ 
+arm-none-eabi-size   Lab5new.elf 
+arm-none-eabi-objdump -h -S  Lab5new.elf  > "Lab5new.list"
+   text	   data	    bss	    dec	    hex	filename
+  26776	    476	   2116	  29368	   72b8	Lab5new.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab5new.list
+ 
+
+15:02:35 Build Finished. 0 errors, 7 warnings. (took 707ms)
+

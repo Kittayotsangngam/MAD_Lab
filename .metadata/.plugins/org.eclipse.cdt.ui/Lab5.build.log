@@ -1,0 +1,7 @@
+14:10:18 **** Build of configuration Debug for project Lab5 ****
+make -j16 all 
+Drivers/STM32F7xx_HAL_Driver/subdir.mk:70: *** unable to generate command line.  Stop.
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+
+14:10:18 Build Failed. 1 errors, 0 warnings. (took 254ms)
+

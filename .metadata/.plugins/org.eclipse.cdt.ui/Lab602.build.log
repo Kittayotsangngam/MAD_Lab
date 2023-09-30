@@ -1,0 +1,63 @@
+15:32:10 **** Incremental Build of configuration Debug for project Lab602 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/STM32F7xx_HAL_Driver/Inc -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/CMSIS/Device/ST/STM32F7xx/Include -IC:/Users/honho/STM32Cube/Repository/STM32Cube_FW_F7_V1.17.1/Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:120:19: warning: implicit declaration of function 'displayclock' [-Wimplicit-function-declaration]
+  120 |                   displayclock(min,sec);
+      |                   ^~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:185:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  185 | displayclock(uint32_t mindis,uint32_t secdis){
+      | ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'displayclock':
+../Core/Src/main.c:189:9: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  189 |         sprintf(hexString,"%02d:%02d\r", mindis, secdis);
+      |         ^~~~~~~
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   25 | #include "gpio.h"
+  +++ |+#include <stdio.h>
+   26 | 
+../Core/Src/main.c:189:9: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  189 |         sprintf(hexString,"%02d:%02d\r", mindis, secdis);
+      |         ^~~~~~~
+../Core/Src/main.c:189:9: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:189:31: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  189 |         sprintf(hexString,"%02d:%02d\r", mindis, secdis);
+      |                            ~~~^          ~~~~~~
+      |                               |          |
+      |                               int        uint32_t {aka long unsigned int}
+      |                            %02ld
+../Core/Src/main.c:189:36: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  189 |         sprintf(hexString,"%02d:%02d\r", mindis, secdis);
+      |                                 ~~~^             ~~~~~~
+      |                                    |             |
+      |                                    int           uint32_t {aka long unsigned int}
+      |                                 %02ld
+../Core/Src/main.c:190:58: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  190 |         HAL_UART_Transmit(&huart3, (uint8_t*) hexString, strlen(hexString), 1000);
+      |                                                          ^~~~~~
+../Core/Src/main.c:26:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | #include "gpio.h"
+  +++ |+#include <string.h>
+   26 | 
+../Core/Src/main.c:190:58: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  190 |         HAL_UART_Transmit(&huart3, (uint8_t*) hexString, strlen(hexString), 1000);
+      |                                                          ^~~~~~
+../Core/Src/main.c:190:58: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:192:1: warning: control reaches end of non-void function [-Wreturn-type]
+  192 | }
+      | ^
+arm-none-eabi-gcc -o "Lab602.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\honho\STM32CubeIDE\MAD_Lab\Lab602\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab602.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab602.elf
+ 
+arm-none-eabi-size   Lab602.elf 
+arm-none-eabi-objdump -h -S  Lab602.elf  > "Lab602.list"
+   text	   data	    bss	    dec	    hex	filename
+  22132	    420	   3732	  26284	   66ac	Lab602.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab602.list
+ 
+
+15:32:11 Build Finished. 0 errors, 9 warnings. (took 767ms)
+
